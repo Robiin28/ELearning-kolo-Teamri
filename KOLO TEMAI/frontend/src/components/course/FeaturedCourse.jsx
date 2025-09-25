@@ -42,7 +42,7 @@ const FeaturedCourses = ({ section }) => {
 
   const fetchCourses = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/courses', {
+      const response = await axios.get('https://kolo-temari-backend-service.onrender.com/api/courses', {
         withCredentials: true,
       });
 
@@ -66,7 +66,7 @@ const FeaturedCourses = ({ section }) => {
   const handleEnrollNow = async (course) => {
     const courseId=course._id
     try {
-      const response = await axios.post(`http://localhost:5000/api/courses/${course._id}/enroll`, {
+      const response = await axios.post(`https://kolo-temari-backend-service.onrender.com/api/courses/${course._id}/enroll`, {
         courseId,
         userId: user.id,
       }, {
@@ -103,7 +103,7 @@ const FeaturedCourses = ({ section }) => {
 
   const handleAddToCart = async (course) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/cart/my', {
+      const response = await axios.post('https://kolo-temari-backend-service.onrender.com/api/cart/my', {
         courseId: course._id,
         name: course.title,
         price: course.price || 0,

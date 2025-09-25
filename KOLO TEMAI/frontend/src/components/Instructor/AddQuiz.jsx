@@ -127,7 +127,7 @@ const AddQuiz = ({ lessonId, onClose }) => {
           
         })),
       };
-      const response = await axios.post(`http://localhost:5000/api/course/lesson/${lessonId}/quiz`, formData,{withCredentials: true});
+      const response = await axios.post(`https://kolo-temari-backend-service.onrender.com/api/course/lesson/${lessonId}/quiz`, formData,{withCredentials: true});
   
       if (response.data.status === 'success') {
         toast({

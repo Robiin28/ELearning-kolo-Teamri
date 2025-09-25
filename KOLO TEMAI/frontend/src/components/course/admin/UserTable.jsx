@@ -13,7 +13,7 @@ const UserTable = ({ role = 'student', onUpdate, onDelete }) => {
     const fetchData = async () => {
         try {
             setLoad(true);
-            const response = await axios.get(`http://localhost:5000/api/auth/users/${role}`,{withCredentials:true});
+            const response = await axios.get(`https://kolo-temari-backend-service.onrender.com/api/auth/users/${role}`,{withCredentials:true});
             if (response.data.status === 'success') {
                 setData(response.data.data.users);
             } else {
@@ -32,7 +32,7 @@ const UserTable = ({ role = 'student', onUpdate, onDelete }) => {
 
     const handleDeleteUser = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/api/auth/deleteUser/${id}`,{withCredentials:true});
+            const response = await axios.delete(`https://kolo-temari-backend-service.onrender.com/api/auth/deleteUser/${id}`,{withCredentials:true});
             if (response.status === 204) {
                 fetchData();
                 alert('Successfully deleted');

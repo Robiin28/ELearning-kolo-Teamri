@@ -131,7 +131,7 @@ const AddLessonForm = ({ section, onAddLesson, onCancel }) => {
       console.log("Lesson Data to be submitted:", lessonData);
   
       // Submit lesson data
-      const response = await axios.post(`http://localhost:5000/api/courses/${section.courseId}/sections/${section._id}/lessons`, lessonData, { withCredentials: true });
+      const response = await axios.post(`https://kolo-temari-backend-service.onrender.com/api/courses/${section.courseId}/sections/${section._id}/lessons`, lessonData, { withCredentials: true });
       if (response.data.status === 'success') {
         toast({ title: 'Lesson added successfully', status: 'success' });
         onAddLesson(response.data.data.lesson);

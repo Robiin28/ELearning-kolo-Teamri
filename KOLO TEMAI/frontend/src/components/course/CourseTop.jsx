@@ -40,7 +40,7 @@ export const CourseTop = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/courses");
+        const response = await axios.get("https://kolo-temari-backend-service.onrender.com/api/courses");
         if (response.data && response.data.status === 'success') {
           setCourses(response.data.data.courses);
         } else {
@@ -77,7 +77,7 @@ export const CourseTop = () => {
     }
 const courseId=course._id;
     try {
-      const response = await axios.post(`http://localhost:5000/api/courses/${course._id}/enroll`, {
+      const response = await axios.post(`https://kolo-temari-backend-service.onrender.com/api/courses/${course._id}/enroll`, {
         courseId,
         userId: user.id,
 
@@ -126,7 +126,7 @@ const courseId=course._id;
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/cart/my', {
+      const response = await axios.post('https://kolo-temari-backend-service.onrender.com/api/cart/my', {
         courseId: course._id,
         name: course.title,
         price: course.price || 0,

@@ -91,7 +91,7 @@ export const CourseTable = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/courses', {
+      const response = await axios.get('https://kolo-temari-backend-service.onrender.com/api/courses', {
         withCredentials: true // This line ensures cookies are sent with the request
       });
       

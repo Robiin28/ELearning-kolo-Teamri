@@ -27,7 +27,7 @@ const LessonDetails = ({ lesson, goBack }) => {
   const handleUpdateLesson = async () => {
     setLoading(true);
     try {
-      const response = await axios.put(`http://localhost:5000/api/lessons/${lesson._id}`, { 
+      const response = await axios.put(`https://kolo-temari-backend-service.onrender.com/api/lessons/${lesson._id}`, { 
         title: updatedTitle, 
         content: updatedContent 
       },{withCredentials: true});

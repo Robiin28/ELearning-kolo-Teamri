@@ -10,7 +10,7 @@ export const TeamCardHome = () => {
   useEffect(() => {
     const fetchInstructors = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/auth/users/instructor"); // Replace with your API endpoint
+        const response = await axios.get("https://kolo-temari-backend-service.onrender.com/api/auth/users/instructor"); // Replace with your API endpoint
         if (response.data && response.data.status === 'success') {
           // Filter instructors from the response
           const filteredInstructors = response.data.data.users;

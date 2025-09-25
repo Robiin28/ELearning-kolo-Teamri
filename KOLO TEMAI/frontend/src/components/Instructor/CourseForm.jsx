@@ -134,9 +134,9 @@ const CourseForm = ({ toggleForm, onSubmitSuccess }) => {
 
       let response;
       if (editingCourseId) {
-        response = await axios.put(`http://localhost:5000/api/courses/${editingCourseId}`, courseData,{withCredentials:true});
+        response = await axios.put(`https://kolo-temari-backend-service.onrender.com/api/courses/${editingCourseId}`, courseData,{withCredentials:true});
       } else {
-        response = await axios.post('http://localhost:5000/api/courses', courseData,{withCredentials:true});
+        response = await axios.post('https://kolo-temari-backend-service.onrender.com/api/courses', courseData,{withCredentials:true});
       }
 
       if (response.status === 200 || response.status === 201) {

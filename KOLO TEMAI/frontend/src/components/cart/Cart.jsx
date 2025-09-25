@@ -31,7 +31,7 @@ export const Cart = () => {
   useEffect(() => {
     const fetchCartData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/cart/my', {
+        const response = await axios.get('https://kolo-temari-backend-service.onrender.com/api/cart/my', {
           withCredentials: true
         });
         setCart(response.data.data.cart); // Set the whole cart

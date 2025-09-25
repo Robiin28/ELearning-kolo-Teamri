@@ -48,7 +48,7 @@ const SignupModal = ({ isOpen, onClose, onOpenSignin }) => {
 
     try {
       // POST request to signup endpoint
-      const response = await axiosInstance.post("http://localhost:5000/api/auth/signup", {
+      const response = await axiosInstance.post("https://kolo-temari-backend-service.onrender.com/api/auth/signup", {
         name: formData.name,
         email: formData.email,
         password: formData.password,

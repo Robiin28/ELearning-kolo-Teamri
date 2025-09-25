@@ -21,7 +21,7 @@ const LessonManagement = () => {
     const fetchCourses = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/api/courses',{withCredentials:true});
+        const response = await axios.get('https://kolo-temari-backend-service.onrender.com/api/courses',{withCredentials:true});
         await new Promise(resolve => setTimeout(resolve, 1000)); // 1-second delay
         if (response.data.status === 'success') {
           setCourses(response.data.data.courses);
@@ -46,7 +46,7 @@ const LessonManagement = () => {
   const handleRowClick = async (courseId) => {
     setLoading(true);
     try {
-      const fetch = await axios.get(`http://localhost:5000/api/course/${courseId}/section`,{withCredentials:true});
+      const fetch = await axios.get(`https://kolo-temari-backend-service.onrender.com/api/course/${courseId}/section`,{withCredentials:true});
       await new Promise(resolve => setTimeout(resolve, 1000));
       if (fetch.data.status === 'success') {
         setSection(fetch.data.data.sections);

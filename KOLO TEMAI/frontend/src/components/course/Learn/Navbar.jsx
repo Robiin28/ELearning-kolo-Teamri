@@ -34,7 +34,7 @@ export const Navbar = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/courses', { withCredentials: true });
+        const response = await axios.get('https://kolo-temari-backend-service.onrender.com/api/courses', { withCredentials: true });
         const courseData = response.data?.data?.courses || [];
         setCourses(courseData);
       } catch (error) {

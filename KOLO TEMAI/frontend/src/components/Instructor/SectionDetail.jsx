@@ -14,7 +14,7 @@ const SectionDetails = ({ section, goBack }) => {
   // Fetch lessons for the selected section
   const fetchLessons = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/courses/${section.courseId}/sections/${section._id}/lessons`, { withCredentials: true });
+      const response = await axios.get(`https://kolo-temari-backend-service.onrender.com/api/courses/${section.courseId}/sections/${section._id}/lessons`, { withCredentials: true });
       console.log(response.data); // Log response data to verify structure
       if (response.data.status === 'success') {
         const sortedLessons = response.data.data.lessons.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)); // Sort lessons by createdAt in ascending order

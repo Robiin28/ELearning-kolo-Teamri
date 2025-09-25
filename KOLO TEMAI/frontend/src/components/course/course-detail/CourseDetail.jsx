@@ -36,7 +36,7 @@ const CourseDetail = () => {
   useEffect(() => {
     const fetchSections = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/course/${courseId}/section`, { withCredentials: true });
+        const response = await axios.get(`https://kolo-temari-backend-service.onrender.com/api/course/${courseId}/section`, { withCredentials: true });
         
         if (response.data.status === "success") {
           setSections(response.data.data.sections);

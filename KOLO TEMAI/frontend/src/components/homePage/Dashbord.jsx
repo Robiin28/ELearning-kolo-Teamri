@@ -73,7 +73,7 @@ export const Dashboard = () => {
 
   const fetchEnrollments = async (userId) => {
     try {
-      const response = await axiosInstance.get(`http://localhost:5000/api/enrollments/${userId}`);
+      const response = await axiosInstance.get(`https://kolo-temari-backend-service.onrender.com/api/enrollments/${userId}`);
       setEnrollments(response.data.data.enrollments);
     } catch (error) {
       console.error("Error fetching enrollments:", error);
@@ -82,7 +82,7 @@ export const Dashboard = () => {
 
   const fetchInstructorCourses = async (instructorId) => {
     try {
-      const response = await axiosInstance.get(`http://localhost:5000/api/courses/instructor/${instructorId}`);
+      const response = await axiosInstance.get(`https://kolo-temari-backend-service.onrender.com/api/courses/instructor/${instructorId}`);
       setInstructorCourses(response.data.data.courses);
     } catch (error) {
       console.error("Error fetching instructor courses:", error);

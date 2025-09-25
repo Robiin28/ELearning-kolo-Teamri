@@ -17,7 +17,7 @@ export const Quiz = () => {
   useEffect(() => {
     const fetchQuizData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/course/lesson/${lessonId}/quiz/${quizId}`, {
+        const response = await axios.get(`https://kolo-temari-backend-service.onrender.com/api/course/lesson/${lessonId}/quiz/${quizId}`, {
           withCredentials: true,
         });
         if (response.data.status === 'success') {

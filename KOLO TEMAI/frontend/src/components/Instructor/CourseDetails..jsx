@@ -41,7 +41,7 @@ const CourseDetails = ({ course, goBack }) => {
   // Fetch sections for the course
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/course/${course._id}/section`, { withCredentials: true });
+      const response = await axios.get(`https://kolo-temari-backend-service.onrender.com/api/course/${course._id}/section`, { withCredentials: true });
       if (response.data.status === 'success') {
         const sortedSections = (response.data.data.sections || []).sort((a, b) => a.order - b.order);
         setSections(sortedSections); // Ensure sections are always sorted
@@ -72,7 +72,7 @@ const CourseDetails = ({ course, goBack }) => {
         order: sectionOrder,
         courseId: course._id, // Pass courseId to the section
       };
-      const response = await axios.post(`http://localhost:5000/api/course/${course._id}/section`, newSection, { withCredentials: true });
+      const response = await axios.post(`https://kolo-temari-backend-service.onrender.com/api/course/${course._id}/section`, newSection, { withCredentials: true });
       if (response.data.status === 'success') {
         setSections((prevSections) => {
           const updatedSections = [...prevSections, response.data.data];

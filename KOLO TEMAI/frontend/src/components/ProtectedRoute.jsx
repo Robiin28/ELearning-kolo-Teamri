@@ -1,18 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { useToast, Spinner, Center } from "@chakra-ui/react";
-import axiosInstance from "../utils/AxiosInstance"; // Your axios instance
+import axiosInstance from "../utils/AxiosInstance";
+import Cookies from "js-cookie"; // ✅ Use cookies since login stores tokens in cookies
 
 const ProtectedRoute = ({ children, requireAdmin }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null); // Initially null to block content
-  const [isLoading, setIsLoading] = useState(true); // Loading state for the auth check
-  const [showRedirect, setShowRedirect] = useState(false); // Control when to redirect
+  const [isAuthenticated, setIsAuthenticated] = useState(null); // null = not checked yet
+  const [isLoading, setIsLoading] = useState(true);
+  const [showRedirect, setShowRedirect] = useState(false);
   const toast = useToast();
 
   const checkAuth = async () => {
     try {
-      const token = localStorage.getItem("authToken");
-      const response = await axiosInstance.get("/auth/check", { headers: { Authorization: `Bearer ${token}` } });
+      // ✅ Get token from cookies
+      const token = Cookies.get("authToken");
+
+      if (!token) {
+        setIsAuthenticated(false);
+        setIsLoading(false);
+        return;
+      }
+
+      // ✅ Send request to backend to verify token
+      const response = await axiosInstance.get(
+        "https://kolo-temari-backend-service.onrender.com/api/auth/check",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          withCredentials: true, // important when using cookies
+        }
+      );
 
       if (response.data.status === "success") {
         setIsAuthenticated(true);
@@ -22,7 +38,7 @@ const ProtectedRoute = ({ children, requireAdmin }) => {
     } catch (error) {
       setIsAuthenticated(false);
     } finally {
-      setIsLoading(false); // End loading state after check
+      setIsLoading(false);
     }
   };
 
@@ -45,11 +61,10 @@ const ProtectedRoute = ({ children, requireAdmin }) => {
         setShowRedirect(true);
       }, 2000);
 
-      return () => clearTimeout(timer); // Clean up timeout if component unmounts
+      return () => clearTimeout(timer);
     }
   }, [isAuthenticated, toast]);
 
-  // Show spinner while checking authentication status
   if (isLoading) {
     return (
       <Center height="100vh">
@@ -57,16 +72,16 @@ const ProtectedRoute = ({ children, requireAdmin }) => {
       </Center>
     );
   }
+
   if (showRedirect) {
     return <Navigate to="/" replace />;
   }
 
-  // Check if the user is authenticated
   if (isAuthenticated) {
-   
-    const userRole = localStorage.getItem("userRole"); 
+    // ✅ Get role from cookie instead of localStorage
+    const userRole = Cookies.get("userRole");
     if (requireAdmin && userRole !== "admin") {
-      return <Navigate to="/" replace />; 
+      return <Navigate to="/" replace />;
     }
     return children;
   }

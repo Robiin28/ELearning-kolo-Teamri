@@ -16,7 +16,7 @@ export const LessonTable = () => {
     const fetchLessons = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/courses/${data}/${sectionId}/lessons`,{withCredentials:true}); // Adjusted endpoint to use courseId
+        const response = await axios.get(`https://kolo-temari-backend-service.onrender.com/api/courses/${data}/${sectionId}/lessons`,{withCredentials:true}); // Adjusted endpoint to use courseId
         // Simulating a delay for demonstration
         await new Promise(resolve => setTimeout(resolve, 1000));
         if (response.data.status === 'success') {

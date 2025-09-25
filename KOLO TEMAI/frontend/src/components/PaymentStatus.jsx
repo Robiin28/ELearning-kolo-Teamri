@@ -18,7 +18,7 @@ const PaymentStatus = () => {
   const handleVerifyPayment = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/payments/success', {
+      const response = await axios.post('https://kolo-temari-backend-service.onrender.com/api/payments/success', {
         tx_ref,
       }, { withCredentials: true });
 

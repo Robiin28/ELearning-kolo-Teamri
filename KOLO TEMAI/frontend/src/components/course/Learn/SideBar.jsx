@@ -71,7 +71,7 @@ export const SideBar = ({ onSelectLesson, section }) => {
   useEffect(() => {
     const fetchLessons = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/courses/${section.courseId}/sections/${section._id}/lessons`, {
+        const response = await axios.get(`https://kolo-temari-backend-service.onrender.com/api/courses/${section.courseId}/sections/${section._id}/lessons`, {
           withCredentials: true // Include cookies with the request
         });
         setLessons(response.data.data.lessons);

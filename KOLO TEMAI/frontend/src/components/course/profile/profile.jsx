@@ -121,7 +121,7 @@ export const Profile = () => {
                 // Now send a request to update the user's profile pic
                 try {
                     const response = await axios.patch(
-                        "http://localhost:5000/api/auth/updateMe",
+                        "https://kolo-temari-backend-service.onrender.com/api/auth/updateMe",
                         { pic: url }, // Update the pic field with the new URL
                         { withCredentials: true }
                     );
@@ -145,7 +145,7 @@ export const Profile = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.patch("http://localhost:5000/api/auth/updateMe", {
+      const response = await axios.patch("https://kolo-temari-backend-service.onrender.com/api/auth/updateMe", {
         name: user.name,
         email: user.email,
         bio: user.bio,
@@ -175,7 +175,7 @@ export const Profile = () => {
 
     if (securityDetails.newPassword === securityDetails.confirmPassword) {
       try {
-        const response = await axios.patch("http://localhost:5000/api/auth/updatePassword", {
+        const response = await axios.patch("https://kolo-temari-backend-service.onrender.com/api/auth/updatePassword", {
           currentPassword: securityDetails.currentPassword,
           confirmPassword: securityDetails.confirmPassword,
           password: securityDetails.newPassword,

@@ -29,7 +29,7 @@ const CourseManagement = () => {
         const fetchCourses = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('http://localhost:5000/api/courses',{withCredentials:true});
+                const response = await axios.get('https://kolo-temari-backend-service.onrender.com/api/courses',{withCredentials:true});
                 await new Promise(resolve => setTimeout(resolve, 1000)); // 1-second delay
                 if (response.data.status === 'success') {
                     setCourses(response.data.data.courses);
@@ -123,7 +123,7 @@ const CourseManagement = () => {
             };
 
             if (editingCourseId) {
-                const response = await axios.put(`http://localhost:5000/api/courses/${editingCourseId}`, courseData,{withCredentials:true});
+                const response = await axios.put(`https://kolo-temari-backend-service.onrender.com/api/courses/${editingCourseId}`, courseData,{withCredentials:true});
                 if (response.status === 200) {
                     setCourses((prev) => prev.map(course => (course._id === editingCourseId ? response.data.data.course : course)));
                     resetForm();
@@ -132,7 +132,7 @@ const CourseManagement = () => {
                     alert(`Failed to update course. Server responded with status code: ${response.status}`);
                 }
             } else {
-                const response = await axios.post('http://localhost:5000/api/courses', courseData,{withCredentials:true});
+                const response = await axios.post('https://kolo-temari-backend-service.onrender.com/api/courses', courseData,{withCredentials:true});
                 if (response.status === 201) {
                     setCourses((prev) => [...prev, response.data.data.course]);
                     resetForm();

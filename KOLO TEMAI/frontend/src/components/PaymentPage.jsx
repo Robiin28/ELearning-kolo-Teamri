@@ -58,7 +58,7 @@ const PaymentPage = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/api/payments', paymentData, {
+      const response = await axios.post('https://kolo-temari-backend-service.onrender.com/api/payments', paymentData, {
         withCredentials: true,
       });
       if (response.data.success) {

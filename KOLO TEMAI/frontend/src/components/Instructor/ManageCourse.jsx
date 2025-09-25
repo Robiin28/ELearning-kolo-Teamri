@@ -34,7 +34,7 @@ const ManageCourses = () => {
   const fetchCourses = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/api/courses', { withCredentials: true });
+      const response = await axios.get('https://kolo-temari-backend-service.onrender.com/api/courses', { withCredentials: true });
       if (response.data.status === 'success') {
         setCourses(response.data.data.courses);
       } else {

@@ -41,7 +41,7 @@ const SignInModal = ({ isOpen, onClose, onOpenSignin }) => {
 
     try {
       // POST request to login endpoint
-      const response = await axiosInstance.post("http://localhost:5000/api/auth/login", formData);
+      const response = await axiosInstance.post("https://kolo-temari-backend-service.onrender.com/api/auth/login", formData);
 
       if (response.data.status === "success") {
         // On successful login, store tokens in cookies
